@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void helloCPU() {
-	printf("Hello from the CPU.\n");
+    printf("Hello from the CPU.\n");
 }
 
 /*
@@ -10,23 +10,23 @@ void helloCPU() {
 * to read "Hello from the GPU!"
 */
 void helloGPU() {
-	printf("Hello also from the CPU.\n");
+    printf("Hello also from the CPU.\n");
 }
 
 int main() {
-	helloCPU();
+    helloCPU();
 
-	/*
-	* Refactor this call to `helloGPU` so that it launches
-	* as a kernel on the GPU.
-	*/
+    /*
+    * Refactor this call to `helloGPU` so that it launches
+    * as a kernel on the GPU.
+    */
 
-	helloGPU<<<1, 1>>>();
-	/*
-	* Add code below to synchronize on the completion of the
-	* `helloGPU` kernel completion before continuing the CPU
-	* thread.
-	*/
-	cudaDeviceSynchronize();
-	return 0;
+    helloGPU<<<1, 1>>>();
+    /*
+    * Add code below to synchronize on the completion of the
+    * `helloGPU` kernel completion before continuing the CPU
+    * thread.
+    */
+    cudaDeviceSynchronize();
+    return 0;
 }

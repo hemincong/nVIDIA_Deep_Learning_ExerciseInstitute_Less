@@ -6,23 +6,23 @@
 */
 
 __global__ void loop(int N) {
-	int i =	threadIdx.x + blockIdx.x * blockDim.x;
-	printf("This is iteration number %d\n", i);
+    int i = threadIdx.x + blockIdx.x * blockDim.x;
+    printf("This is iteration number %d\n", i);
 }
 
 
 int main() {
-	/*
-	* When refactoring `loop` to launch as a kernel, be sure
-	* to use the execution configuration to control how many
-	* "iterations" to perform.
-	*
-	* For this exercise, be sure to use more than 1 block in
-	* the execution configuration.
-	*/
+    /*
+    * When refactoring `loop` to launch as a kernel, be sure
+    * to use the execution configuration to control how many
+    * "iterations" to perform.
+    *
+    * For this exercise, be sure to use more than 1 block in
+    * the execution configuration.
+    */
 
-	int N = 10;
-	loop<<<2, 5>>>(N);
-	cudaDeviceSynchronize();
+    int N = 10;
+    loop<<<2, 5>>>(N);
+    cudaDeviceSynchronize();
 }
 
